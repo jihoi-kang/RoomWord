@@ -18,8 +18,7 @@ class AddWordActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_word)
         editWordView = findViewById(R.id.edit_word)
 
-        val button = findViewById<Button>(R.id.button_save)
-        button.setOnClickListener {
+        findViewById<Button>(R.id.button_save).setOnClickListener {
             val replyIntent = Intent()
             if (TextUtils.isEmpty(editWordView.text)) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
@@ -35,4 +34,5 @@ class AddWordActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_REPLY = "com.example.android.wordlistsql.REPLY"
     }
+
 }

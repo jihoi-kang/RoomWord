@@ -1,8 +1,7 @@
-package com.jay.roomword.data
+package com.jay.roomword.db
 
 import androidx.lifecycle.LiveData
 import com.jay.roomword.data.Word
-import com.jay.roomword.data.WordDao
 
 // Declares the DAO as a private property in the constructor. Pass in the DAO
 // instead of the whole database, because you only need access to the DAO

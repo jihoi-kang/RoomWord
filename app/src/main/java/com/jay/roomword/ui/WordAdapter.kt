@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jay.roomword.R
 import com.jay.roomword.data.Word
 
-class WordsAdapter internal constructor(
+class WordAdapter internal constructor(
     context: Context
-) : RecyclerView.Adapter<WordsAdapter.WordViewHolder>() {
+) : RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var words = emptyList<Word>() // Cached copy of words

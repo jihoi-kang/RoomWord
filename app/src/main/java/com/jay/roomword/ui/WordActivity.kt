@@ -12,27 +12,28 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.jay.roomword.R
 import com.jay.roomword.data.Word
 
-class WordsActivity : AppCompatActivity() {
+class WordActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: WordsViewModel
+    private lateinit var viewModel: WordViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_word)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
-        val adapter = WordsAdapter(this)
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        val wordAdapter = WordAdapter(this)
+        findViewById<RecyclerView>(R.id.rv_word).apply {
+            adapter = wordAdapter
+            layoutManager = LinearLayoutManager(this@WordActivity)
+        }
 
-        viewModel = ViewModelProvider(this).get(WordsViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(WordViewModel::class.java)
         viewModel.allWords.observe(this, { words ->
             // Update the cached copy of the words in the adapter.
-            words?.let { adapter.setWords(it) }
+            words?.let { wordAdapter.setWords(it) }
         })
 
-        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
-            startActivityForResult(Intent(this@WordsActivity, AddWordActivity::class.java).apply {
+        findViewById<FloatingActionButton>(R.id.fab_button).setOnClickListener {
+            startActivityForResult(Intent(this@WordActivity, AddWordActivity::class.java).apply {
                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             }, REQ_CODE_ADD_WORD)
         }
@@ -57,9 +58,7 @@ class WordsActivity : AppCompatActivity() {
     }
 
     companion object {
-
         private const val REQ_CODE_ADD_WORD = 2000
-
     }
 
 }

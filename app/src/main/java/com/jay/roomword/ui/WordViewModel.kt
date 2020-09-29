@@ -5,12 +5,14 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.jay.roomword.data.Word
-import com.jay.roomword.data.WordRepository
-import com.jay.roomword.data.WordRoomDatabase
+import com.jay.roomword.db.WordRepository
+import com.jay.roomword.db.WordRoomDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class WordsViewModel(application: Application) : AndroidViewModel(application) {
+class WordViewModel(
+    application: Application
+) : AndroidViewModel(application) {
 
     private val repository: WordRepository
     // Using LiveData and caching what getAlphabetizedWords returns has several benefits:

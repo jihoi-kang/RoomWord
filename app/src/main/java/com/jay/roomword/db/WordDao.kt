@@ -1,10 +1,11 @@
-package com.jay.roomword.data
+package com.jay.roomword.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.jay.roomword.data.Word
 
 @Dao
 interface WordDao {
